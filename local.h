@@ -28,44 +28,66 @@
     Buscar como trabajar con el enum
 */
 
-enum tProvincia {Buenos_Aires, CABA, Catamarca, Chaco, Chubut, Cordoba, Corrientes, Entre_Rios, Formosa, Jujuy, La_Pampa, La_Rioja, Mendoza, Misiones, Neuquen,
-                 Rio_Negro, Salta, San_Juan, San_Luis, Santa_Cruz, Santa_Fe, Santiago_del_Estero, Tierra_del_Fuego, Tucuman};
+enum tProvincia{Buenos_Aires, CABA, Catamarca, Chaco, Chubut, Cordoba, Corrientes, Entre_Rios, Formosa, Jujuy, La_Pampa, La_Rioja, Mendoza, Misiones, Neuquen, Rio_Negro, Salta, San_Juan, San_Luis, Santa_Cruz, Santa_Fe, Santiago_del_Estero, Tierra_del_Fuego, Tucuman};
 
-typedef struct LocalStruct *Local;
+struct Local{
+    int codigoSucursal;
+	tProvincia provincia;
+	int cantidadArticulos;
+	float monto;
+	float metros;
+	int casaMatriz;
+	Local(){
+		
+	}
+	Local(int codigosucursal, tProvincia prov, int cantidadarticulos, float mont, float metr, int casamatriz){
+	codigoSucursal = codigosucursal;
+    provincia = prov;
+    cantidadArticulos = cantidadarticulos;
+    monto = mont;
+    metros = metr;
+    casaMatriz = casamatriz;
+	}
+	
+	Local(int codigosucursal, tProvincia prov, int cantidadarticulos, float mont, float metr){
+	codigoSucursal = codigosucursal;
+    provincia = prov;
+    cantidadArticulos = cantidadarticulos;
+    monto = mont;
+    metros = metr;
+	}
+	
+		
+	};
 
+//Constructor 3
+Local crearLocal(Local *local, int codigoSucursal, tProvincia provincia, int cantidadArticulos, float monto, float metros, int casaMatriz);
 
-//CONSTRUCTORES
-/*Local crearLocal();*/
-Local crearLocal(int codigoSucursal, tProvincia provincia, int cantidadArticulos, float monto, float metros, int casaMatriz);
 
 //DESTRUCTOR
-void destruirLocal(Local local);
-
-
+void destruirLocal(Local *local);
 
 //GETTERS Y SETTERS
-int getCodigoSucursal(Local local);
-void setCodigoSucursal(Local local,int codigoSucursal);
+int getCodigoSucursal(Local *local);
+void setCodigoSucursal(Local *local,int codigoSucursal);
 
-tProvincia getProvincia(Local local);
+tProvincia getProvincia(Local *local);
 void setProvincia(Local local, tProvincia provincia);
 
-int getCantidadArticulos(Local local);
-void setCantidadArticulos(Local local, int cantidadArticulos);
+int getCantidadArticulos(Local *local);
+void setCantidadArticulos(Local *local, int cantidadArticulos);
 
-float getMonto(Local local);
-void setMonto(Local local, float monto);
+float getMonto(Local *local);
+void setMonto(Local *local, float monto);
 
-float getMetros(Local local);
-void setMetros(Local local, float metros);
+float getMetros(Local *local);
+void setMetros(Local *local, float metros);
 
-int getCasaMatriz(Local local);
-void setCasaMatriz(Local local, int casaMatriz);
+int getCasaMatriz(Local *local);
+void setCasaMatriz(Local *local, int casaMatriz);
 
 /********************************************************************************************************************************/
 
-//MÉTODOS
-void mostrarLocal(Local local);
 
 
 #endif // LOCAL_H_INCLUDED
